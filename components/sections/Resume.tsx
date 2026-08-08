@@ -189,7 +189,7 @@ export const ResumeSection = () => {
                 </div>
                 <div className="flex-grow w-full h-full bg-white relative">
                   <iframe
-                    src="/aayaann-kausar.github.io/resume.pdf"
+                    src="resume.pdf"
                     className="w-full h-full border-none absolute inset-0"
                     title="Resume"
                   />

@@ -16,21 +16,21 @@ export const CertificationsSection = () => {
       issuer: "Kaggle | Google",
       date: "Dec 18, 2025",
       url: "#",
-      image: "/aayaann-kausar.github.io/certs/kaggle.png"
+      image: "/certs/kaggle.png"
     },
     {
       title: "Advanced Learning Algorithms",
       issuer: "DeepLearning.AI | Stanford Online",
       date: "Jul 11, 2025",
       url: "https://coursera.org/verify/C1OQDIHY9ZC1",
-      image: "/aayaann-kausar.github.io/certs/stanford_advanced.png"
+      image: "/certs/stanford_advanced.png"
     },
     {
       title: "Supervised Machine Learning: Regression and Classification",
       issuer: "DeepLearning.AI | Stanford Online",
       date: "May 27, 2025",
       url: "https://coursera.org/verify/EG0AHH3IK74L",
-      image: "/aayaann-kausar.github.io/certs/stanford_supervised.png"
+      image: "/certs/stanford_supervised.png"
     }
   ];
 
