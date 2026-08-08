@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform, Variants } from "framer-motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { NeonCard } from "@/components/ui/NeonCard";
 import { TECH_STACK } from "@/lib/constants";
@@ -30,19 +30,48 @@ const getIcon = (name: string) => {
 export const TechStackSection: React.FC = () => {
   const prefersReduced = useReducedMotion();
 
-  const containerVariants = {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start center", "end center"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const groupVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
+        when: "beforeChildren",
         staggerChildren: prefersReduced ? 0 : 0.1,
       },
     },
   };
 
-  const itemVariants = {
+  const dotVariants: Variants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      transition: { type: "spring", stiffness: 300, damping: 20 } 
+    }
+  };
+
+  const titleVariants = {
     hidden: { opacity: 0, x: prefersReduced ? 0 : -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, x: prefersReduced ? 0 : -20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      x: 0, 
+      transition: { type: "spring", stiffness: 200, damping: 20 } 
+    },
   };
 
   return (
@@ -50,27 +79,40 @@ export const TechStackSection: React.FC = () => {
       <div className="container mx-auto px-6">
         <SectionLabel index="05" text="CORE COMPETENCIES" />
 
-        <div className="mt-16 max-w-4xl mx-auto space-y-12 relative before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-[var(--accent-primary)] before:to-[var(--accent-secondary)] before:opacity-30">
+        <div ref={sectionRef} className="mt-16 max-w-4xl mx-auto space-y-12 relative">
+          {/* Animated Vertical Line */}
+          {!prefersReduced ? (
+            <motion.div 
+              className="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-50 origin-top"
+              style={{ scaleY: lineHeight }}
+            />
+          ) : (
+            <div className="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-30" />
+          )}
+
           {TECH_STACK.map((group, idx) => (
             <motion.div
               key={idx}
-              variants={containerVariants}
+              variants={groupVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="relative pl-12"
             >
               {/* Layer Node */}
-              <div className="absolute left-0 top-1.5 w-8 h-8 rounded-full bg-[var(--bg-surface)] border-2 border-[var(--accent-primary)] flex items-center justify-center z-10 shadow-[0_0_10px_var(--accent-primary-20)]">
+              <motion.div 
+                variants={dotVariants}
+                className="absolute left-0 top-1.5 w-8 h-8 rounded-full bg-[var(--bg-surface)] border-2 border-[var(--accent-primary)] flex items-center justify-center z-10 shadow-[0_0_10px_var(--accent-primary-20)]"
+              >
                 <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
-              </div>
+              </motion.div>
 
               {/* Group Label */}
-              <div className="flex flex-col mb-4">
+              <motion.div variants={titleVariants} className="flex flex-col mb-4">
                 <h4 className="font-orbitron font-bold text-[var(--text-primary)] uppercase tracking-wider text-lg">
                   {group.category}
                 </h4>
-              </div>
+              </motion.div>
 
               {/* Grid of tools */}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
