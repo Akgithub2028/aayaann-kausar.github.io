@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: var(--bg-void);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-cyan-neon: var(--accent-primary);
+  --color-accent-violet: var(--accent-secondary);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-dim: var(--text-dim);
+
+  --font-orbitron: var(--font-orbitron);
+  --font-jetbrains: var(--font-jetbrains);
+  --font-space-grotesk: var(--font-space-grotesk);
+}
+
+:root {
+  /* === BACKGROUNDS (3 layers, dark navy-black not neutral black) === */
+  --bg-void:      #0b0f19;  /* page background: near-black with blue undertone */
+  --bg-surface:   #111827;  /* card/panel surface */
+  --bg-elevated:  #1f2937;  /* hover states, active modals, code blocks */
+  --bg-border:    rgba(255, 255, 255, 0.08); /* universal border color */
+
+  /* === PRIMARY ACCENT — Electric Blue-Cyan === */
+  --accent-primary:     #00c8ff;
+  --accent-primary-10:  rgba(0, 200, 255, 0.10);
+  --accent-primary-20:  rgba(0, 200, 255, 0.20);
+  --accent-primary-glow: 0 0 24px rgba(0, 200, 255, 0.30);
+
+  /* === SECONDARY ACCENT — Indigo === */
+  --accent-secondary:     #6366f1;
+  --accent-secondary-10:  rgba(99, 102, 241, 0.10);
+  --accent-secondary-20:  rgba(99, 102, 241, 0.20);
+  --accent-secondary-glow: 0 0 24px rgba(99, 102, 241, 0.30);
+
+  /* === METRIC GREEN === */
+  --accent-metric:    #10d9a0;
+  --accent-metric-10: rgba(16, 217, 160, 0.10);
+
+  /* === TEXT HIERARCHY (4 levels) === */
+  --text-primary:   #c9d1d9;  /* main content, GitHub's off-white */
+  --text-secondary: #8b949e;  /* supporting text, labels */
+  --text-dim:       #484f58;  /* decorative, de-emphasized */
+  --text-inverse:   #070a0f;  /* text on bright accent backgrounds */
+
+  /* === CODE SYNTAX (terminal/code elements only) === */
+  --code-green:   #3fb950;
+  --code-blue:    #79c0ff;
+  --code-yellow:  #e3b341;
+  --code-pink:    #f778ba;
+  --code-purple:  #d2a8ff;
+  --code-orange:  #ffa657;
+
+  /* Consistent 8-point grid. Use these as reference. Never use arbitrary pixel values */
+  --radius-sm: 3px;    /* subtle rounding — replaces rounded-none on cards */
+  --radius-md: 6px;    /* inputs, tags */
+  --radius-lg: 10px;   /* modals, overlays */
+  --radius-pill: 999px; /* tags, badges */
+}
+
+body {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+}
+
+code, pre, kbd, samp, .font-jetbrains {
+  font-family: var(--font-jetbrains), 'Courier New', monospace;
+}
+
+h1, h2, h3, .font-orbitron {
+  font-family: var(--font-orbitron), sans-serif;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -30%;
+  left: -20%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(0,200,255,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -15%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, rgba(99,102,241,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-primary);
+  border-radius: var(--radius-sm);
+}
+
+/* Keyframes */
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+  40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+  20% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 1px); }
+  40% { clip-path: inset(30% 0 20% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 2px); }
+  80% { clip-path: inset(5% 0 80% 0); transform: translate(1px, -1px); }
+  100% { clip-path: inset(40% 0 10% 0); transform: translate(-1px, 1px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes electric-bolt {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.animate-electric-bolt {
+  background: linear-gradient(
+    120deg,
+    var(--accent-primary) 40%,
+    #ffffff 48%,
+    #00ffff 50%,
+    #ffffff 52%,
+    var(--accent-primary) 60%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: electric-bolt 3s linear infinite;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  width: 200%;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
+  width: 200%;
+}
+
+/* Custom Cursor Overrides */
+html.hide-cursor, 
+html.hide-cursor body, 
+html.hide-cursor * {
+  cursor: none !important;
+}
+
+/* Advanced Hover Masks */
+.mask-reveal {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  transition: clip-path 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.group:hover .mask-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
