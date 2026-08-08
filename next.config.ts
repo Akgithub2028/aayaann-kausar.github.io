@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: "/aayaann-kausar.github.io",
   images: {
     unoptimized: true,
     remotePatterns: [
