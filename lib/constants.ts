@@ -21,40 +21,27 @@ export const LANGUAGE_COLORS: Record<string, string> = {
 
 export const TECH_STACK = [
   {
-    category: "Machine Learning & AI",
-    items: ["PyTorch", "TensorFlow", "HuggingFace", "LangChain", "Scikit-Learn", "Keras", "OpenCV", "Pandas", "NumPy"],
+    category: "Quant Research & Alpha Generation",
+    items: ["Cross-Sectional Factor Models", "IC-Weighted Alpha Combination", "Walk-Forward Validation", "Momentum & Reversal", "Fama-French Factors"],
   },
   {
-    category: "Systems Engineering",
-    items: ["C++", "Python", "Rust", "CUDA", "Numba", "Distributed Systems", "OpenTelemetry", "gRPC"],
+    category: "Portfolio Construction & Risk",
+    items: ["CVXPY", "Hierarchical Risk Parity", "CVaR Optimization", "Max Diversification", "Ledoit-Wolf Shrinkage", "Probabilistic & Deflated Sharpe", "Block Bootstrap"],
   },
   {
-    category: "Data & Infrastructure",
-    items: ["PostgreSQL", "Redis", "Docker", "Kubernetes", "AWS", "GCP", "FastAPI", "Kafka"],
+    category: "Market Microstructure & Market Making",
+    items: ["LOB Reconstruction (L2/L3)", "Microprice & Order-Flow Imbalance", "Avellaneda-Stoikov MM", "Adverse Selection Modeling", "Queue-Aware Execution Sim"],
   },
   {
-    category: "Web Technologies",
-    items: ["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "Framer Motion", "GraphQL"],
-  }
-];
-
-export const TIMELINE_FALLBACK = [
-  {
-    date: "2023 - Present",
-    title: "Senior AI Engineer",
-    description: "Building scalable machine learning pipelines and autonomous agents.",
-    tags: ["Python", "LLMs", "Docker"],
+    category: "Low-Latency C++ Systems",
+    items: ["C++20", "Lock-Free SPSC Queues", "Atomic Memory Ordering", "Cache-Line Alignment", "Branchless Arithmetic", "CMake", "GoogleTest", "pybind11"],
   },
   {
-    date: "2021 - 2023",
-    title: "Fullstack Developer",
-    description: "Developed and maintained highly available microservices.",
-    tags: ["TypeScript", "Node.js", "React"],
+    category: "Machine Learning & Deep Learning",
+    items: ["Transformer Architectures", "Self-Supervised Pretraining", "Heteroscedastic Uncertainty", "Cosine-Warmup LR Scheduling", "EMA Averaging", "PyTorch", "Scikit-Learn"],
   },
   {
-    date: "2019",
-    title: "Started Open Source Journey",
-    description: "Began contributing to various open-source projects on GitHub.",
-    tags: ["JavaScript", "Git"],
+    category: "Software & Data Infrastructure",
+    items: ["Event-Driven Async Architecture", "Pydantic", "Polars & DuckDB", "PyArrow (Parquet/ZSTD)", "FastAPI", "Streamlit", "GitHub Actions CI/CD", "mypy", "Hypothesis"],
   },
 ];
