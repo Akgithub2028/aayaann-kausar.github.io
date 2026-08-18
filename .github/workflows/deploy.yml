@@ -37,6 +37,8 @@ jobs:
         run: npm ci
       - name: Build with Next.js
         run: npx --no-install next build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
