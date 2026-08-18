@@ -15,18 +15,18 @@ interface HeroProps {
 }
 
 const ROLES = [
-  "AI / ML Engineer",
-  "Quantitative Researcher",
-  "Systems Architect",
-  "Competitive Programmer",
+  "Quantitative Trader",
+  "Market Microstructure Researcher",
+  "Low-Latency C++ Engineer",
+  "Autonomous AI Engineer",
 ];
 
 const INFERENCE_OUTPUT = [
-  { delay: 0,    text: "[SYSTEM] Allocating 256GB VRAM pool..." },
-  { delay: 600,  text: "[MEMORY] Indexing 2.4B vectors into semantic space" },
-  { delay: 1200, text: "[AGENT]  Loading autonomous cognition matrix" },
-  { delay: 1800, text: "[CORE]   Compiling execution graphs [████████░░] 80%" },
-  { delay: 2400, text: "[STATUS] All systems nominal. Standing by." },
+  { delay: 0,    text: "[BACKTEST] Alpha model — Sharpe 2.14, 26.2% OOS CAGR" },
+  { delay: 600,  text: "[LATENCY]  SPSC lock-free path @ 1.00us p50 / 1.20us p99" },
+  { delay: 1200, text: "[VENUE]    Binance/Coinbase/Kraken/OKX — 3.4M events/sec" },
+  { delay: 1800, text: "[RESEARCH] Wunder Fund HFT Challenge — Rank #9 global" },
+  { delay: 2400, text: "[STATUS]   All systems nominal. Standing by." },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ user, stats }) => {
